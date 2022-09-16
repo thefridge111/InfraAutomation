@@ -1,4 +1,7 @@
 # https://registry.terraform.io/providers/hashicorp/vsphere/latest/docs
+# https://registry.terraform.io/providers/hashicorp/vsphere/latest/docs/resources/virtual_machine
+# https://fortynorthsecurity.com/blog/an-intro-to-terraform-with-azure-pfsense-and-windows-10/
+
 provider "vsphere" {
   user                 = var.vsphere_user
   password             = var.vsphere_password
@@ -25,7 +28,7 @@ data "vsphere_network" "network" {
   datacenter_id = data.vsphere_datacenter.datacenter.id
 }
 
-resource "vsphere_virtual_machine" "vm" {
+resource "vsphere_virtual_machine" "apt-repo" {
   name             = "foo"
   resource_pool_id = data.vsphere_compute_cluster.cluster.resource_pool_id
   datastore_id     = data.vsphere_datastore.datastore.id
